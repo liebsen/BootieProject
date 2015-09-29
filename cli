@@ -1,0 +1,50 @@
+<?php if(PHP_SAPI !== 'cli') die();
+/**
+ * CLI
+ *
+ * This file is the command-line interface (CLI) entry point for the system
+ *
+ * @package		MicroMVC
+ * @author		David Pennington
+ * @copyright	(c) 2010 MicroMVC Framework
+ * @license		http://micromvc.com/license
+ ********************************** 80 Columns *********************************
+ */
+
+// Include bootstrap
+//require __DIR__.'/../bootstrap/bootstrap.php';
+
+include '../vendor/micro/Common.php';
+include '../vendor/micro/Database.php';
+include '../vendor/micro/Error.php';
+
+
+// Enable global error handling
+set_error_handler(array('\App\Error', 'handler'));
+register_shutdown_function(array('\App\Error', 'fatal'));
+
+// Require a CLI path
+if(empty($argv[1]))
+{
+	die("Please enter a path to the CLI file.\nExample: " . colorize('php cli file.php', 'blue') . "\n");
+}
+
+// Build path to file
+$file = SP . 'command/' . str_replace(EXT, '', trim($argv[1], '/')) . EXT;
+
+// Does the file exist?
+if( ! is_file($file)) die("Please enter a valid file path\n");
+
+// Require a valid, safe path
+if( ! preg_match('/^[\w\-~\/\.+]{1,600}/', $argv[1])) die(colorize("Invalid path given", 'red'). "\n");
+
+try
+{
+	require($file);
+}
+catch (Exception $e)
+{
+	\App\Error::exception($e);
+}
+
+// End

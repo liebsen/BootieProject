@@ -1,0 +1,26 @@
+        //'//assets/css/lato.css', 
+        '//assets/css/roboto.css', 
+        '//assets/css/source-sans-pro.css', 
+        //'//assets/css/jura.css',
+        '//assets/css/theme.css', 
+        //'//assets/css/slick.css', 
+        //'//assets/css/morris.css', 
+        '//assets/js/plugins/morris/raphael.min.js',
+        '//assets/js/plugins/morris/morris.min.js',
+        '//assets/css/morris.css', 
+        '//assets/css/roboto.css', 
+        '//assets/css/source-sans-pro.css', 
+        //'//assets/css/lato.css'
+        '//assets/css/slick.css', 
+                '//assets/css/chosen.css', 
+        '//assets/js/plugins/morris/raphael.min.js',
+        '//assets/js/plugins/morris/morris.min.js'
+
+        '//assets/js/slick.min.js',
+                        '//assets/js/bootstrap-dialog.min.js',
+        '//assets/js/bootstrap-notify.js',
+
+        '//assets/js/chosen.jquery.js',
+        '//assets/js/jquery-ui-1.10.4.custom.min.js',
+                        '//assets/css/bootstrap-dialog.min.css', 
+        '//assets/css/bootstrap-notify.css', 
