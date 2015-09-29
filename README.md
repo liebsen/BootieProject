@@ -12,6 +12,10 @@
 
 <h2>Install</h2>
 
+<p> Pull libraries</p>
+<pre><code data-language="shell">$ composer install
+</code></pre>
+
 <p> Create an empty database and set your access credentials here</p>
 <pre><code data-language="shell">$ nano config/config.php
 </code></pre>
