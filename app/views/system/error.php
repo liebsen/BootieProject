@@ -32,7 +32,7 @@ code.source em {background: #ffc;}
 	<?php //print dump(debug_backtrace()); ?>
 
 	<?php
-	if($backtrace = \App\Error::backtrace(1))
+	if($backtrace = \bootie\Error::backtrace(1))
 	{
 
 		foreach($backtrace as $id => $line)

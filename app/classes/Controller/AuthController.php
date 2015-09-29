@@ -1,26 +1,8 @@
-<?php namespace App\Controllers;
-
-require SP . 'app/models/User.php';
-
-use App\Models\User as User;
+<?php namespace Controller;
 
 class AuthController {
 	
 	static $salt = "qwepoiasdlkj!";
-
-	public function __construct(){
-	}
-
-	public function index(){
-	}
-
-	private function clear_session(){
-		if(isset($_SESSION['user_id'])){
-			foreach($_SESSION as $k=>$v){
-				unset($_SESSION[$k]);
-			}
-		}
-	}
 
 	private function add_session($data){
 		$_SESSION['user_id'] = $data->id;
@@ -128,7 +110,7 @@ class AuthController {
 		$password = sha1(strtolower($password).self::$salt);
 		$json = ['result' => false];
 
-		$user = User::row([
+		$user = \Model\User::row([
 			"email = '" .  $email . "' AND pass = '" . $password . "' OR username = '" .  $email . "' AND pass = '" . $password . "'"
 		]);
 

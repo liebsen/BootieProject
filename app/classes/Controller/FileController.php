@@ -1,8 +1,4 @@
-<?php namespace App\Controllers;
-
-require SP . 'app/models/File.php';
-require SP . 'vendor/micro/Str.php';
-require SP . 'vendor/micro/Image.php';
+<?php namespace Controller;
 
 class FileController {
 
@@ -48,11 +44,11 @@ class FileController {
 
 		if(isset($id) && $id){
 
-			$filename = \App\Models\File::row([
+			$filename = \App\Model\File::row([
 				'id' => $id
 			])->delete();
 
-			\App\Helpers\Image::destroy_group($filename);
+			\Bootie\Image::destroy_group($filename);
 
 			return [$result];
 		}
@@ -68,7 +64,7 @@ class FileController {
 
 		if($sorted){
 			foreach($sorted as $i => $id) {
-				$entry = new \App\Models\File();
+				$entry = new \App\Model\File();
 				$entry->id = $id;
 				$entry->position = ($i+1);
 				$entry->save();
@@ -87,27 +83,27 @@ class FileController {
 		if ( ! empty($_FILES) ) {
 
 			if( ! is_numeric($post_id)){
-				$post = new \App\Models\Post();
+				$post = new \App\Model\Post();
 				$post->updated = time();
 				$post_id = $post->save();
 			} 
 
-			$filename = \App\Helpers\Str::sanitize($_FILES['file']['name'],$storeFolder);
+			$filename = \Bootie\Str::sanitize($_FILES['file']['name'],$storeFolder);
 			
-			\App\Helpers\File::writeable($storeFolder);
+			\Bootie\File::writeable($storeFolder);
 
 			if( copy($_FILES['file']['tmp_name'], $storeFolder . $filename)){
 
 				$stat = stat($storeFolder . $filename);
 
-				$entry = new \App\Models\File();
+				$entry = new \App\Model\File();
 				$entry->name = $filename;
 				$entry->post_id = $post_id;
 				$entry->file_size = $stat[7];
 
 				$file_id = $entry->save();
 
-				\App\Helpers\Image::resize_group($storeFolder,$filename);
+				\Bootie\Image::resize_group($storeFolder,$filename);
 
 				return [
 					'success' => true, 

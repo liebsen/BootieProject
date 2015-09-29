@@ -1,18 +1,18 @@
-<?php namespace App\Models;
+<?php namespace Model;
  
-class Tag extends \App\ORM
+class Tag extends \Bootie\ORM
 {
     public static $table = 'tags';
     public static $foreign_key = 'tag_id';
 
     public static $belongs_to = array(
-        'tag_id' => '\App\Models\PostTag'
+        'tag_id' => '\Model\PostTag'
     );
 
     public static $has_many_through = array(
         'tags' => array(
-            'post_id' => '\App\Models\PostTag',
-            'post_id' => '\App\Models\Post',
+            'post_id' => '\Model\PostTag',
+            'post_id' => '\Model\Post',
         ),
     );    
 }

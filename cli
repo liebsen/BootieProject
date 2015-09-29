@@ -20,8 +20,8 @@ include '../vendor/micro/Error.php';
 
 
 // Enable global error handling
-set_error_handler(array('\App\Error', 'handler'));
-register_shutdown_function(array('\App\Error', 'fatal'));
+set_error_handler(array('\bootie\Error', 'handler'));
+register_shutdown_function(array('\bootie\Error', 'fatal'));
 
 // Require a CLI path
 if(empty($argv[1]))
@@ -44,7 +44,7 @@ try
 }
 catch (Exception $e)
 {
-	\App\Error::exception($e);
+	\bootie\Error::exception($e);
 }
 
 // End

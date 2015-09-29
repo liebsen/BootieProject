@@ -1,7 +1,4 @@
-<?php namespace App\Controllers;
-
-require SP . 'app/models/Tag.php';
-require SP . 'app/models/PostTag.php';
+<?php namespace Controller;
 
 class TagController {
 	
@@ -13,7 +10,7 @@ class TagController {
 		$user_id = session('user_id');
 
 		if(isset($post_id) && $post_id){
-			$tags_ids = \App\Models\PostTag::select('fetch','tag_id',null,[
+			$tags_ids = \Model\PostTag::select('fetch','tag_id',null,[
 				'post_id' => $post_id
 			]);
 		}
@@ -22,12 +19,12 @@ class TagController {
 			$tags_ids = [0];
 		}
 
-		$included = \App\Models\Tag::select('fetch','tag',null,[
+		$included = \Model\Tag::select('fetch','tag',null,[
 			'id IN(' . implode(',',$tags_ids) . ')',
 			'user_id' => $user_id 
 		]);
 
-		$excluded = \App\Models\Tag::select('fetch','tag',null,[
+		$excluded = \Model\Tag::select('fetch','tag',null,[
 			'id NOT IN(' . implode(',',$tags_ids) . ')',
 			'user_id' => $user_id
 		]);	
@@ -49,13 +46,13 @@ class TagController {
 			
 			foreach( $tags as $tag ){
 
-				$tag_id = \App\Models\Tag::select('column','id',null,[
+				$tag_id = \Model\Tag::select('column','id',null,[
 					'tag' => $tag,
 					'user_id' => session('user_id')
 				]);
 
 				if( ! $tag_id ){
-					$tag2 = new \App\Models\Tag();
+					$tag2 = new \Model\Tag();
 					$tag2->tag = $tag;
 					$tag2->user_id = $user_id;
 					$tag2->save();
@@ -63,7 +60,7 @@ class TagController {
 					$tag_id = $tag2->id;
 				}
 
-				$post_tag = new \App\Models\PostTag();
+				$post_tag = new \Model\PostTag();
 				$post_tag->tag_id = $tag_id;
 				$post_tag->post_id = $post_id;
 				$post_tag->save();
@@ -88,17 +85,17 @@ class TagController {
 
 			foreach( $tags as $tag ){
 
-				$tag_id = \App\Models\Tag::select('column','id',null,[
+				$tag_id = \Model\Tag::select('column','id',null,[
 					'tag' => $tag,
 					'user_id' => session('user_id')
 				]);
 
-				$post_tags_ids = \App\Models\PostTag::select('fetch','id',null,[
+				$post_tags_ids = \Model\PostTag::select('fetch','id',null,[
 					'tag_id' => $tag_id
 				]);
 
 				foreach($post_tags_ids as $id){
-					$o = \App\Models\PostTag::row([
+					$o = \Model\PostTag::row([
 						'id' => $id
 					])->delete();
 				}

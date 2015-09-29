@@ -1,15 +1,10 @@
 <?php 
 
 require('../bootstrap/bootstrap.php');
-
-use \Bootie\App as App;
-
 require('../config/common.php');
 require('../config/routes.php');
 
-dd("11");
-
-$app = new \App\App;
+$app = new \bootie\App;
 
 try 
 {
@@ -18,9 +13,10 @@ try
 } 
 catch (Exception $e) 
 {
-	\App\Error::exception($e);
+	\bootie\Error::exception($e);
 }
 
 if($debug){
 	include __DIR__.'/../bootstrap/debug.php';
 }
+

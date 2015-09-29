@@ -52,7 +52,7 @@ code.source em {background: #ffc;}
 
 			// Print file, line, and source
 			print ' in '. $line['file']. ' ['. $line['line']. ']';
-			print '<code class="source">'. \App\Error::source($line['file'], $line['line']). '</code>';
+			print '<code class="source">'. \bootie\Error::source($line['file'], $line['line']). '</code>';
 
 			if(isset($line['args']))
 			{

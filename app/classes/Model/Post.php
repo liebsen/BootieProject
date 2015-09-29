@@ -1,6 +1,6 @@
-<?php namespace App\Models;
+<?php namespace Model;
 
-class Post extends \App\ORM
+class Post extends \Bootie\ORM
 {
     public static $table = 'posts';
 	public static $foreign_key = 'post_id';
@@ -10,13 +10,13 @@ class Post extends \App\ORM
 	];
 
 	public static $has = array(
-		'files' => '\App\Models\File'
+		'files' => '\Model\File'
 	);
 
 	public static $has_many_through = array(
 		'tags' => array(
-			'post_id' => '\App\Models\PostTag',
-			'tag_id' => '\App\Models\Tag',
+			'post_id' => '\Model\PostTag',
+			'tag_id' => '\Model\Tag',
 		),
 	);
 }

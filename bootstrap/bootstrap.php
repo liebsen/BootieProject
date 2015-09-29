@@ -31,14 +31,7 @@ define('DS', '/');
 define('SP', realpath(__DIR__) . '/..' . DS);
 
 require(SP . 'vendor/autoload' . EXT);
-?>
-<?php $included_files = get_included_files(); ?>
-<b><?php print count($included_files); ?> PHP Files Included:</b>
-<pre>
-<?php foreach($included_files as $file) print str_replace(SP, '', $file). "\n"; ?>
-</pre>
 
-<?php 
 // Enable global error handling
 set_error_handler(array('\Bootie\Error', 'handler'));
 register_shutdown_function(array('\Bootie\Error', 'fatal'));
