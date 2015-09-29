@@ -26,7 +26,7 @@ $ php cli restore
 </code></pre>
 
 <h3>Nginx</h3>
-<p>Nginx directive recommended</p>
+<p>Nginx suggested directive</p>
 <pre data-language="shell"><code>server {
 
         root /var/www/bootie/public;
@@ -46,4 +46,9 @@ $ php cli restore
         }
 }
 
+</code></pre>
+
+<p>Now you can login</p>
+<pre><code data-language="shell">username: admin
+password: admin
 </code></pre>
