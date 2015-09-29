@@ -1,6 +1,6 @@
 <div class="col-md-9">
 	<div class="page-header">
-		<h1>Caldero <small>Micro Web Application Framework</small></h1>
+		<h1>Bootie <small>Micro Web Application Framework</small></h1>
 	</div>
 
 	<blockquote>
@@ -25,7 +25,7 @@
 	<div class="group-config">&nbsp;</div>
 	<h2> Want to know more? </h5>
 	<hr>
-	<p>Learn more about <a href="https://github.com/devmeta/caldero">Caldero</a></p>
+	<p>Learn more about <a href="https://github.com/martinfree/Bootie">Bootie</a></p>
 	<p>Feel free to <a href="/contact">contact us</a></p>
 </div>
 

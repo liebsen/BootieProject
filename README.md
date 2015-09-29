@@ -1,38 +1,35 @@
-<h1><i class='ion-ios-gear'></i> Caldero</h1>
+<h1><i class='ion-ios-gear'></i> Bootie</h1>
 
-<p>Micro Web Application Framework</p>
+<p>PHP 5 Micro Web Application Framework</p>
+<p>Based on Micromvc by David Pennington</p>
+
+<h2>Improvments</h2>
+<ul>
+<li>Routing request method based.</li>
+<li>Filters.</li>
+<li>Dispatching method simplification.</li>
+</ul>
 
 <h2>Install</h2>
 
-<h3>Dump SQL schema</h3>
-<p>Create a database and run:</p>
-
-<pre><code data-language="shell">$ zcat vendor/caldero/schema/schema.sql.gz | mysql -u root -p caldero
+<p> Create an empty database and set your access credentials here</p>
+<pre><code data-language="shell">$ nano config/config.php
 </code></pre>
 
-
-<h3>DB access config</h3>
-<p>Open your config file</p>
-<pre><code data-language="shell">$ cp vendor/caldero/config.default.php config.php
-$ nano vendor/caldero/config.php
+<p>With Micromvc migrations tools run</p>
+<pre><code data-language="shell">$ php cli create
+$ php cli restore
 </code></pre>
 
-<p>Edit with your database credentials</p>
-<pre data-language="php"><code>define('DBHOST','localhost');
-define('DBUSER','dbuser');
-define('DBPASS','dbpass');
-define('DBNAME','caldero');
-</code></pre>
-
-<h3>Nginx directive</h3>
-<p>Create a new nginx entry like this</p>
+<h3>Nginx</h3>
+<p>Nginx directive recommended</p>
 <pre data-language="shell"><code>server {
 
-        root /var/www/caldero/public;
+        root /var/www/bootie/public;
 
         index index.php index.html index.htm;
 
-        server_name caldero;
+        server_name bootie.local;
 
         location / {
                 try_files $uri $uri/ /index.php$is_args$args;

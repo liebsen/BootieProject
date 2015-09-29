@@ -12,16 +12,8 @@
  */
 
 // Include bootstrap
-//require __DIR__.'/../bootstrap/bootstrap.php';
-
-include '../vendor/micro/Common.php';
-include '../vendor/micro/Database.php';
-include '../vendor/micro/Error.php';
-
-
-// Enable global error handling
-set_error_handler(array('\bootie\Error', 'handler'));
-register_shutdown_function(array('\bootie\Error', 'fatal'));
+require __DIR__.'/config/common.php';
+require __DIR__.'/bootstrap/bootstrap.php';
 
 // Require a CLI path
 if(empty($argv[1]))

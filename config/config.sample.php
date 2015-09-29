@@ -1,7 +1,4 @@
-<?php 
-
-$local = ($_SERVER['REMOTE_ADDR'] == "127.0.0.1");
-
+<?php
 // Available translations (Array of Locales)
 $config['languages'] = array('en');
 

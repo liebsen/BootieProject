@@ -10,9 +10,6 @@
 	<script type="text/javascript" src="/min/?g=js.default"></script>
 </head>
 <body class="default">
-<?php if($_SERVER['REMOTE_ADDR'] != "127.0.0.1"):?>
-	<?php include SP . 'app/views/shared/analytics.php';?>
-<?php endif;?>
 	<?php include SP . 'app/views/shared/header.php';?>
 	<div class="container">
 		<div class="row content"><?php echo $content;?></div>

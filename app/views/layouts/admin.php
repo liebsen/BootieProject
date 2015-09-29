@@ -10,7 +10,6 @@
 	<script type="text/javascript" src="/min/?g=js.admin"></script>
 </head>
 <body>
-	<?php // include SP . 'app/views/shared/analytics.php';?>
 	<?php include SP . 'app/views/shared/header-admin.php';?>
 	<div class="container">
 		<div class="row content"><?php echo $content;?></div>
