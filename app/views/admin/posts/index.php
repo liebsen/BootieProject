@@ -11,13 +11,16 @@
 					<tr>
 						<th>#</th>
 						<th>Title</th>
+						<th>Created</th>
+						<th>Updated</th>
 						<th><i class="ion-cog"></i></th>
 					</tr>
 				<?php foreach($entries as $post):?>
 					<tr>
 						<td><?php echo $post->id;?></td>
-						<td><?php echo $post->updated;?></td>
 						<td><?php echo $post->title;?></td>
+						<td><?php echo date('M d H:i',$post->created);?></td>
+						<td><?php echo date('M d H:i',$post->updated);?></td>
 						<td><a href="/admin/posts/<?php echo $post->id;?>" class="btn btn-success"><i class="ion-edit"></i> Edit</a></td>
 					</tr>
 				<?php endforeach;?>
