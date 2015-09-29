@@ -8,7 +8,7 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a href="/" class="navbar-brand">
-				<i class='ion-bonfire x2'></i> Caldero
+				<i class='ion-erlenmeyer-flask x2'></i> Bootie
 			</a>
 		</div>
 		<div class="collapse navbar-collapse" id="navbar-md">
