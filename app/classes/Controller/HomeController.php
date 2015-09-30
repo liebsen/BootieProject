@@ -2,6 +2,8 @@
 
 class HomeController {
 	
+	static $layout = "default";
+	
 	public function index(){
 
 		$posts = \Model\Post::fetch();

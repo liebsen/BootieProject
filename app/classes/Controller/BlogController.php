@@ -1,7 +1,9 @@
 <?php namespace Controller;
 
 class BlogController  {
-	
+
+	static $layout = "default";
+		
 	public function index(){
 
 		$posts_ids = $tags_ids = $tag_obs = $tags =  [];
