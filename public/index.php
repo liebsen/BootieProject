@@ -4,16 +4,15 @@ require('../bootstrap/bootstrap.php');
 require('../config/common.php');
 require('../config/routes.php');
 
-$app = new \bootie\App;
+$app = new \Bootie\App;
 
 try 
 {
 	$app->dispatch(PATH);
-	$db = null; 
 } 
 catch (Exception $e) 
 {
-	\bootie\Error::exception($e);
+	\Bootie\Error::exception($e);
 }
 
 if($debug){

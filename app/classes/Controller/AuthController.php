@@ -1,6 +1,6 @@
 <?php namespace Controller;
 
-class AuthController {
+class AuthController extends \Controller\BaseController {
 	
 	static $salt = "qwepoiasdlkj!";
 

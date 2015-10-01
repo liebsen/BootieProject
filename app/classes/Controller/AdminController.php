@@ -1,6 +1,6 @@
 <?php namespace Controller;
 
-class AdminController {
+class AdminController extends \Controller\BaseController {
 	
 	static $layout = "admin";
 

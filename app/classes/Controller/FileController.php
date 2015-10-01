@@ -1,6 +1,6 @@
 <?php namespace Controller;
 
-class FileController {
+class FileController extends \Controller\BaseController {
 
 	static function upload(){
 		if ($_FILES['file']['name']) {

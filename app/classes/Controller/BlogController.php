@@ -1,6 +1,6 @@
 <?php namespace Controller;
 
-class BlogController  {
+class BlogController extends \Controller\BaseController  {
 
 	static $layout = "default";
 		

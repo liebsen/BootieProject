@@ -1,0 +1,1 @@
+09:11:24 127.0.0.1 Call to a member function select() on null [/var/www/cmvcproj/vendor/bootie/bootie/Bootie/ORM.php] (412)

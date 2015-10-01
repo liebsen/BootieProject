@@ -1,6 +1,6 @@
 <?php namespace Controller;
 
-class HomeController {
+class HomeController extends \Controller\BaseController {
 	
 	static $layout = "default";
 	
