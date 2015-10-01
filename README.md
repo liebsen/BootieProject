@@ -2,7 +2,8 @@
 
 <p>PHP 5 Micro Web Application Framework</p>
 <p>Based on Micromvc by David Pennington</p>
-
+<p>You can see an <a href="http://bootie.devmeta.net">online demo of this project here</a></p>
+<hr>
 <h2>Improvments</h2>
 <ul>
 <li>Routing request method based.</li>
