@@ -6,9 +6,7 @@ class PostController extends \Controller\BaseController {
 
 	public function index(){
 
-		$entries = \Model\Post::fetch([
-			'lang' => "en"
-		]);
+		$entries = \Model\Post::fetch();
 
 		return \Bootie\App::view('admin.posts.index',[
 			'entries'	=> $entries
@@ -20,6 +18,7 @@ class PostController extends \Controller\BaseController {
 		if( ! $id ){
 			$p = new \Model\Post();
 			$p->title = 'New Post';
+			$p->user_id = session('user_id');
 			$p->save();
 			$id = $p->id;
 		} 
