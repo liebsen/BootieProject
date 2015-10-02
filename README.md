@@ -24,7 +24,7 @@
 $ nano config/config.php
 </code></pre>
 
-<p>With Micromvc migrations tools run</p>
+<p>With Micro migrations tools run</p>
 <pre><code data-language="shell">$ php cli create
 $ php cli restore
 </code></pre>

@@ -35,7 +35,7 @@
         <ul class="ch-grid">
         <?php foreach($posts as $post):?>
             <li>    
-                <div class="ch-item" style="background-image: url(/upload/posts/th-<?php echo count($post->files()) ? $post->files()[0]->name : 'default';?>)">
+                <div class="ch-item" style="background-image: url(/upload/posts/thumb/<?php echo count($post->files()) ? $post->files()[0]->name : 'default';?>)">
                     <div class="ch-title">
                         <h5>
                             <i class="ion-android-time"></i> <?php echo timespan($post->created);?>

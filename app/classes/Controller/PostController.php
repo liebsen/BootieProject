@@ -5,6 +5,7 @@ class PostController extends \Controller\BaseController {
 	static $layout = "admin";
 
 	public function index(){
+
 		$entries = \Model\Post::paginate([
 			'updated' => "DESC"
 		]);
@@ -44,6 +45,7 @@ class PostController extends \Controller\BaseController {
 		$entry->slug = \Bootie\Str::slugify($title);
 		$entry->caption = $caption;
 		$entry->content = $content;
+		$entry->updated = time();
 		$result = $entry->save();
 
 		return $result;

@@ -37,20 +37,17 @@ class FileController extends \Controller\BaseController {
         return $message;
 	}
 
-
 	public function destroy(){
 
 		extract($_POST);
 
 		if(isset($id) && $id){
 
-			$filename = \App\Model\File::row([
+			$filename = \Model\File::row([
 				'id' => $id
 			])->delete();
 
-			\Bootie\Image::destroy_group($filename);
-
-			return [$result];
+			return \Bootie\Image::destroy_group($filename);
 		}
 
 		return [
@@ -76,34 +73,40 @@ class FileController extends \Controller\BaseController {
 
 	static public function resize(){
 
-		$storeFolder = SP . 'public/upload/'.'posts/';
-
 		extract($_POST);
 
 		if ( ! empty($_FILES) ) {
 
-			if( ! is_numeric($post_id)){
-				$post = new \App\Model\Post();
-				$post->updated = time();
-				$post_id = $post->save();
-			} 
+			$mainFolder = SP . 'public/upload/';
+	
+			directory_is_writable($mainFolder,0777);
 
-			$filename = \Bootie\Str::sanitize($_FILES['file']['name'],$storeFolder);
+			$storeFolder =  $mainFolder . $domain;
+			$filename = filename_unique($storeFolder. '/' . key(config()->img_sizes) . '/',$_FILES['file']['name']);
 			
-			\Bootie\File::writeable($storeFolder);
+			directory_is_writable($storeFolder,0777);
 
-			if( copy($_FILES['file']['tmp_name'], $storeFolder . $filename)){
+			$orig_filename = $storeFolder . $filename;
 
-				$stat = stat($storeFolder . $filename);
+			if( copy($_FILES['file']['tmp_name'], $orig_filename)){
 
-				$entry = new \App\Model\File();
+				$stat = stat($orig_filename);
+
+				$entry = new \Model\File();
 				$entry->name = $filename;
 				$entry->post_id = $post_id;
 				$entry->file_size = $stat[7];
 
 				$file_id = $entry->save();
 
-				\Bootie\Image::resize_group($storeFolder,$filename);
+				\Bootie\Image::resize_group($orig_filename,$storeFolder,$filename);
+
+				if( config()->img_save_orig)
+				{
+					directory_is_writable($storeFolder. '/orig/',0777);
+					copy($orig_filename, $storeFolder . '/orig/' . $filename);
+					unlink($orig_filename);
+				}
 
 				return [
 					'success' => true, 
@@ -112,9 +115,8 @@ class FileController extends \Controller\BaseController {
 				];
 			}
 
-			return [
-				"error" => "Could not write to fs"
-			];
+			return \Exception('Could not write to directory:' . $storeFolder );
 		}
-	}	
+	}
+
 }

@@ -450,6 +450,19 @@ function directory($dir, $recursive = TRUE)
 	return new \RecursiveIteratorIterator($i, \RecursiveIteratorIterator::SELF_FIRST);
 }
 
+function filename_unique($dir, $filename, $prepend = '')
+{
+
+    $info = pathinfo($filename);
+    $token = token();
+    $filename = $prepend . $token;
+
+    while (file_exists($dir . $prepend . $token . '.' . $info['extension'])) {
+    	$token = token();
+    }
+
+    return $filename . '.' . $info['extension'];
+}
 
 /**
  * Make sure that a directory exists and is writable by the current PHP process.
@@ -464,7 +477,7 @@ function directory_is_writable($dir, $chmod = 0755)
 	if(! is_dir($dir) AND ! mkdir($dir, $chmod, TRUE)) return FALSE;
 
 	// If it isn't writable, and can't be made writable
-	if(! is_writable($dir) AND !chmod($dir, $chmod)) return FALSE;
+	if(! is_writable($dir) AND ! chmod($dir, $chmod)) return FALSE;
 
 	return TRUE;
 }

@@ -9,7 +9,7 @@ posts
 {"id":"4","user_id":"1","privacy_id":"1","title":"Some post here","slug":"some-post-here","position":"0","type":"archive","lang":"en","caption":"Caption text","comments":"0","content":"Post body content here.<br><p><br><\/p>","created":"1433033301","updated":"1433033301"}
 {"id":"5","user_id":"1","privacy_id":"1","title":"Another Post","slug":"just-another-post","position":"0","type":"archive","lang":"en","caption":"Lorem Ipsum","comments":"0","content":"<p>Lorem Ipsum<br><\/p>","created":"1433034201","updated":"1433034201"}
 {"id":"6","user_id":"1","privacy_id":"1","title":"Another Magnificient Post Title","slug":"another-post-title","position":"0","type":"archive","lang":"en","caption":"This could be your post caption","comments":"0","content":"<p>This could be your post content<br><\/p>","created":"1433035201","updated":"1433035201"}
-{"id":"17","user_id":"1","privacy_id":"1","title":"It's so easy now","slug":"it-s-so-easy-now","position":null,"type":null,"lang":null,"caption":"Caption Text example","comments":null,"content":"<p>Body text here<br><\/p>","created":"1433033291","updated":"1433033291"}
+{"id":"17","user_id":"1","privacy_id":null,"title":"It's so easy now","slug":"it-s-so-easy-now","position":null,"type":null,"lang":null,"caption":"Caption Text example","comments":null,"content":"<p>Body text here<br><\/p>","created":"1433033291","updated":"1433033291"}
 tags
 {"id":"1","user_id":"1","tag":"hello","type":"blog","created":"0","updated":"0"}
 {"id":"2","user_id":"1","tag":"goodbye","type":"blog","created":"0","updated":"0"}

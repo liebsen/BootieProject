@@ -30,7 +30,9 @@
 						<button type="submit" class="btn btn-lg btn-success"> <i class="ion-checkmark-round"></i> &nbsp;Save </button>
 					</div><div class="clearfix"></div>
 				</form>
-				<form class="dropzone" data-target="post" data-message="Drop images here" data-domain="posts" data-url="/admin/files/resize" data-index="/blog/files/<?php echo $entry->id;?>" data-id="<?php echo $entry->id;?>" data-max="10"></form>
+				<form class="dropzone" data-target="post" data-message="Drop images here" data-domain="posts" data-url="/admin/files/resize" data-index="/blog/files/<?php echo $entry->id;?>" data-id="<?php echo $entry->id;?>" data-max="10">
+					<input type="hidden" name="domain" value="posts">
+				</form>
 			</div>
 			<div class="col-md-3">
 				<div class="group-control">&nbsp;</div>

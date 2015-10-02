@@ -305,7 +305,7 @@ $(function(){
                   var mockFile = { size: item.file_size, name: item.name };
 
                   myDropzone.emit("addedfile", mockFile);
-                  myDropzone.emit("thumbnail", mockFile, '/upload/' + domain + '/th-' + item.name);
+                  myDropzone.emit("thumbnail", mockFile, '/upload/' + domain + '/thumb/' + item.name);
                   
                   $(mockFile.previewElement).data('id',item.id);
                   $(mockFile.previewElement).data('domain',domain);
