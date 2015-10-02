@@ -2,7 +2,7 @@
 	"name": "bootie/project",
 	"type": "library",
 	"description": "Tiny PHP 5 Framework",
-	"keywords": ["mvc"],
+	"keywords": ["php","mvc"],
 	"homepage": "http://devmeta.net",
 	"license": "MIT",
 	"require": {

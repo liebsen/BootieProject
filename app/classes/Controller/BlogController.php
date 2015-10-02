@@ -5,108 +5,18 @@ class BlogController extends \Controller\BaseController  {
 	static $layout = "default";
 		
 	public function index(){
-
-		$posts_ids = $tags_ids = $tag_obs = $tags =  [];
-
-		/* posts all */
-		$posts = \Model\Post::fetch([
-			'lang' => "en"
-		],0,0,[
-			'id' => 'DESC'
-		]);
-
-		/* all tags */
-		foreach($posts as $post){
-			$posts_ids[] = $post->id;
-		}
-
-		if(count($posts_ids)){
-			$tag_obs = \Model\PostTag::fetch([
-				'post_id IN(' . implode(',',$posts_ids) . ')'
-			]);
-
-			foreach($tag_obs as $tag){
-				$tags_ids[] = $tag->tag_id;
-			}
-		}
-
-		if(count($tags_ids)){
-			$tags = \Model\Tag::fetch([
-				'id IN(' . implode(',',array_unique($tags_ids)) . ')'
-			]);
-		}
-
 		return \Bootie\App::view('blog.index',[
-			'posts'	=> $posts,
-			'tags'	=> $tags
+			'posts'	=> \Model\Post::fetch([],0,0,['id' => 'DESC']),
+			'tags'	=> self::find_all_tags(),
 		]);
 	}
 
 	public function tag($path,$tag){
-
-		$posts_ids = $tag_obs = $tags_ids = $tags =  [];
-
-		$tag_id = \Model\Tag::column([
-			'tag' => $tag
+		return \Bootie\App::view('blog.tags',[
+			'posts'	=> self::find_by_tag($tag),
+			'tags'	=> self::find_all_tags(),
+			'tag'	=> $tag
 		]);
-
-		if(is_numeric($tag_id)){
-
-			/* find posts by tag */
-
-			$tag_obs = \Model\PostTag::fetch([
-				'tag_id' => $tag_id
-			]);
-
-			foreach($tag_obs as $tag2){
-				$posts_ids[] = $tag2->post_id;
-			}
-
-			if(count($posts_ids)){
-				$posts = \Model\Post::fetch([
-					'id IN(' . implode(',',array_unique($posts_ids)) . ')'
-				]);
-			}
-
-
-			$posts_ids = [];
-			/* posts all */
-			$posts_all = \Model\Post::fetch([
-				'lang' => "en"
-			],0,0,[
-				'id' => 'DESC'
-			]);
-
-			/* all tags except this */
-			foreach($posts_all as $post){
-				$posts_ids[] = $post->id;
-			}
-
-			if(count($posts_ids)){
-				$tag_obs = \Model\PostTag::fetch([
-					'post_id IN(' . implode(',',$posts_ids) . ')'
-				]);
-
-				foreach($tag_obs as $tag2){
-					if($tag2->tag_id == $tag_id) continue;
-					$tags_ids[] = $tag2->tag_id;
-				}
-			}
-
-			if(count($tags_ids)){
-				$tags = \Model\Tag::fetch([
-					'id IN(' . implode(',',array_unique($tags_ids)) . ')'
-				]);
-			}
-
-			return \Bootie\App::view('blog.tags',[
-				'posts'	=> $posts,
-				'tags'	=> $tags,
-				'tag'	=> $tag
-			]);
-		}
-
-		return \Bootie\App::view('errors.missing');			
 	}
 
 	public function show($path,$slug){
@@ -164,5 +74,68 @@ class BlogController extends \Controller\BaseController  {
 		}
 
 		return $files;
-	}	
+	}
+
+	public function find_by_tag($tag){
+		$tag_id = \Model\Tag::column([
+			'tag' => $tag
+		]);
+
+		if(is_numeric($tag_id)){
+
+			/* find posts by tag */
+
+			$tag_obs = \Model\PostTag::fetch([
+				'tag_id' => $tag_id
+			]);
+
+			foreach($tag_obs as $tag2){
+				$posts_ids[] = $tag2->post_id;
+			}
+
+			if(count($posts_ids)){
+				$posts = \Model\Post::fetch([
+					'id IN(' . implode(',',array_unique($posts_ids)) . ')'
+				]);
+			}
+
+			return $posts;
+		}
+
+		return FALSE;
+
+	}
+
+	public function find_all_tags(){
+		$posts_ids = [];
+
+		/* posts all */
+		$posts_all = \Model\Post::fetch([
+			'lang' => "en"
+		],0,0,[
+			'id' => 'DESC'
+		]);
+
+		foreach($posts_all as $post){
+			$posts_ids[] = $post->id;
+		}
+
+		if(count($posts_ids)){
+			$tag_obs = \Model\PostTag::fetch([
+				'post_id IN(' . implode(',',$posts_ids) . ')'
+			]);
+
+			foreach($tag_obs as $tag2){
+				$tags_ids[] = $tag2->tag_id;
+			}
+		}
+
+		if(count($tags_ids)){
+			return \Model\Tag::fetch([
+				'id IN(' . implode(',',array_unique($tags_ids)) . ')'
+			]);
+		}
+
+		return FALSE;
+	}
 }

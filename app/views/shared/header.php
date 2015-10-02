@@ -19,6 +19,9 @@
 				<li class="<?php echo isset($segments[0]) && $segments[0] == 'contact' ? ' active' : '';?>">
 					<a href="/contact">Contact</a>
 				</li>
+				<li>
+					<a href="https://github.com/martinfree/BootieProject" title="Fork me on Github" data-placement="left" target="_blank"><i class="ion-social-github"></i> </a>
+				</li>
 			</ul>
 		</div>
 	</div>

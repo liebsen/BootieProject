@@ -554,4 +554,109 @@ function colorize($text, $color, $bold = FALSE)
 	return"\033[" . ($bold ? '1' : '0') . ';' . $colors[$color] . "m$text\033[0m";
 }
 
+function timespan($ts) 
+{
+	$mins = (time() - $ts) / 60;
+	$mins = round($mins);
+	$x3="";
+	
+	if($mins==0)
+	{
+		$x3="now";
+	} 
+	elseif($mins > 483840)
+	{ // años
+		$ratio = $mins / 483840 ;
+		$d = round($ratio);
+		$s = $d > 1 ? "s":"";
+		$x3 = $d . "y";//.$s;
+	} 
+	elseif($mins > 40319)
+	{ // meses
+		$ratio = $mins / 40320 ;
+		$d = round($ratio);
+		$s = $d > 1 ? "es":"";
+		$x3 = $d . "m";//.$s;
+	} 
+	elseif($mins > 10079 && $mins < 40319)
+	{ // semanas
+		$ratio = $mins / 10080 ;
+		$d = round($ratio);
+		$s = $d > 1 ? "s":"";
+		$x3 = $d . "w";//.$s;
+	} 
+	elseif($mins > 1439 && $mins < 10079)
+	{ // dias
+		$ratio = $mins / 1440 ;
+		$d = round($ratio);
+		$s = $d > 1 ? "s":"";
+		$x3 = $d . "d";//.$s;
+	} 
+	elseif($mins > 59 && $mins < 1439)
+	{ // horas
+		$x3 = min2hour(round($mins));
+	} 
+	else 
+	{
+		$s = $mins > 1 ? "s":"";
+		$x3 = $mins . "’";//.$s;
+	}
+	
+	return $x3;
+}
+
+function min2hour($mins) 
+{ 
+    if ($mins < 0) 
+    { 
+        $min = Abs($mins); 
+    } 
+    else 
+    { 
+        $min = $mins; 
+    } 
+
+    $H = Floor($min / 60); 
+    $M = ($min - ($H * 60)) / 100; 
+    $hours = $H +  $M; 
+
+    if ($mins < 0) 
+    { 
+        $hours = $hours * (-1); 
+    } 
+
+    $expl = explode(".", $hours); 
+    $H = $expl[0]; 
+
+    if (empty($expl[1])) 
+    { 
+        $expl[1] = 00; 
+    } 
+    
+    $M = $expl[1]; 
+    
+    if (strlen($M) < 2) 
+    { 
+        $M = $M . 0; 
+    }
+    
+    $hours = $H;
+    
+    if($M > 0 && $H < 3)
+    {
+    	$hours.= ":" . $M;
+    }
+    
+    $s = ($H > 1 || $M > 1) ? "s":"";
+    $hours.= "h";//.$s; 
+    
+    return $hours; 
+} 
+
+function words($str,$words=30,$del='...')
+{
+	return str_word_count($str) < $words ? $str : implode(' ',array_slice(explode(' ',$str),0,$words)) . ' ' . $del;
+}
+
+
 // End

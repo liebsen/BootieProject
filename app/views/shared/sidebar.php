@@ -5,7 +5,7 @@
     <hr>
     <div class="">
         <h3>Tags</h3>
-    <?php foreach($tags as $tag):?>
-        <a href="/blog/tag/<?php echo $tag->tag;?>" class="label label-success label-badge btn-tag-included"><?php echo $tag->tag;?></a>
+    <?php foreach($tags as $tag2):?>
+        <a href="/blog/tag/<?php echo $tag2->tag;?>" class="label label-<?php echo isset($tag) && $tag == $tag2->tag ? 'info' : 'success';?> label-badge btn-tag-included"><?php echo $tag2->tag;?></a>
     <?php endforeach;?>
     </div>
