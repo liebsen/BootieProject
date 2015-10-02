@@ -17,6 +17,13 @@ class PostController extends \Controller\BaseController {
 
 	public function edit($path,$id){
 
+		if( ! $id ){
+			$p = new \Model\Post();
+			$p->title = 'New Post';
+			$p->save();
+			$id = $p->id;
+		} 
+
 		$entry = \Model\Post::row([
 			'id' => $id
 		]);
