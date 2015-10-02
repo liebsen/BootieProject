@@ -27,7 +27,7 @@ class PostController extends \Controller\BaseController {
 		$entry = \Model\Post::row([
 			'id' => $id
 		]);
-
+		
 		return \Bootie\App::view('admin.posts.edit',[
 			'entry'	=> $entry
 		]);

@@ -5,7 +5,7 @@
 	</blockquote>
 	<form class="form form-controls" action="/login">
 		<div class="form-group">
-			<input type="text" name="email" class="form-control input-lg" placeholder="Email o nombre de usuario">
+			<input type="text" name="email" class="form-control input-lg" placeholder="Email or username">
 		</div>
 		<div class="form-group">
 			<input type="password" name="password" class="form-control input-lg" placeholder="**********">
