@@ -5,8 +5,9 @@ class PostController extends \Controller\BaseController {
 	static $layout = "admin";
 
 	public function index(){
-
-		$entries = \Model\Post::fetch();
+		$entries = \Model\Post::paginate([
+			'updated' => "DESC"
+		]);
 
 		return \Bootie\App::view('admin.posts.index',[
 			'entries'	=> $entries

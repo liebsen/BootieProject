@@ -4,6 +4,7 @@ class Post extends \Bootie\ORM
 {
     public static $table = 'posts';
 	public static $foreign_key = 'post_id';
+	public static $perpage = 10;
 
 	public static $validator = [
 		'title'	=> 'required'
