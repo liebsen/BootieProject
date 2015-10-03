@@ -32,6 +32,7 @@
 <div class="col-md-3">
 	<div class="group-config">&nbsp;</div>
 	<div class="row">
+	<?php if(count($posts)):?>
         <ul class="ch-grid">
         <?php foreach($posts as $post):?>
             <li>    
@@ -52,5 +53,6 @@
             </li>
 		<?php endforeach;?>
         </ul>
+    <?php endif;?>
 	</div>
 </div>

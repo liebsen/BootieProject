@@ -30,42 +30,9 @@
 						<button type="submit" class="btn btn-lg btn-success"> <i class="ion-checkmark-round"></i> &nbsp;Save </button>
 					</div><div class="clearfix"></div>
 				</form>
-				<form 
-					class="dropzone" 
-					data-target="post" 
-					data-message="Drop images here" 
-					data-domain="posts" 
-					data-url="/admin/files/resize" 
-					data-index="/blog/files/<?php echo $entry->id;?>" 
-					data-id="<?php echo $entry->id;?>" data-max="10">
-				</form>
 			</div>
 			<div class="col-md-3">
 				<div class="group-control">&nbsp;</div>
-				<!--div class="text-left">
-					<h4> <i class="ion-locked"></i> Privacy </h4>
-					<p>Establish your post privacy</p>
-
-					<div class="form-group">
-					    <input type="radio" id="privacy_id1" name="privacy_id" value="1"{{if entry.privacy_id != null && entry.privacy_id == 1}} checked{{/if}}{{if entry.privacy_id == null}} checked{{/if}}>
-					    <label for="privacy_id1"><i class="ion-globe"></i> Public</label>
-					</div>
-					<div class="form-group">
-					    <input type="radio" id="privacy_id2" name="privacy_id" value="2"{{if entry.privacy_id != null && entry.privacy_id == 2}} checked{{/if}}>
-					    <label for="privacy_id2"><i class="ion-lock"></i> Protected</label>
-					</div>
-				</div><hr>
-				<div class="text-left">
-					<h4> <i class="ion-chatbubbles"></i> Comments </h4>
-					<div class="form-group">
-					    <input type="radio" id="disqus1" name="disqus" value="0"{{if entry.disqus != null && entry.disqus == 0}} checked{{/if}}{{if entry.disqus == null}} checked{{/if}}>
-					    <label for="disqus1"> No</label>
-					</div>
-					<div class="form-group">
-					    <input type="radio" id="disqus2" name="disqus" value="1"{{if entry.disqus != null && entry.disqus == 1}} checked{{/if}}{{if entry.disqus == null}} checked{{/if}}>
-					    <label for="disqus2"> Yes</label>
-					</div>
-				</div><hr-->
 				<div class="text-left tags">
 					<h4> <i class="ion-pricetags"></i> Tags </h4>
 				    <div class="input-group">
@@ -74,9 +41,19 @@
 				        <button type="button" class="btn btn-default btn-primary btn-tags-add"><i class="ion-pricetag"></i></button>
 				      </span>
 				    </div><hr>
-					<div class="alert alert-success tags-included"></div>
-					<div class="alert alert-info tags-excluded"></div>
+					<div class="tags-included"></div>
+					<div class="tags-excluded"></div>
 				</div><hr>
+				<h4> <i class="ion-images"></i> Gallery </h4>
+				<form 
+					class="dropzone" 
+					data-target="post" 
+					data-message="Drop images here" 
+					data-domain="posts" 
+					data-url="/admin/files/resize" 
+					data-index="/blog/files/<?php echo $entry->id;?>" 
+					data-id="<?php echo $entry->id;?>" data-max="10">
+				</form>				
 			</div>
 		</div>
 	</div>
