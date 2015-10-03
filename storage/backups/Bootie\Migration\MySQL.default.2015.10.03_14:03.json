@@ -19,6 +19,7 @@ tags
 {"id":"6","user_id":"1","tag":"filters","type":"blog","created":"1443890251","updated":"1443890251"}
 {"id":"7","user_id":"1","tag":"flash-messages","type":"blog","created":"1443890428","updated":"1443890428"}
 {"id":"8","user_id":"1","tag":"views","type":"blog","created":"1443890439","updated":"1443890439"}
+{"id":"9","user_id":"1","tag":"start","type":"blog","created":"1443891050","updated":"1443891050"}
 posts_tags
 {"id":"1","post_id":"2","tag_id":"1","created":"1443889730","updated":"1443889730"}
 {"id":"2","post_id":"2","tag_id":"2","created":"1443889730","updated":"1443889730"}
@@ -30,6 +31,7 @@ posts_tags
 {"id":"8","post_id":"6","tag_id":"3","created":"1443890434","updated":"1443890434"}
 {"id":"9","post_id":"6","tag_id":"8","created":"1443890439","updated":"1443890439"}
 {"id":"10","post_id":"7","tag_id":"8","created":"1443890584","updated":"1443890584"}
+{"id":"11","post_id":"1","tag_id":"9","created":"1443891050","updated":"1443891050"}
 files
 {"id":"1","post_id":"1","title":null,"content":null,"name":"132940ba0aaf18206ec21c4d067537aa.jpg","status":null,"file_size":"59547","position":null,"created":"0000-00-00 00:00:00","updated":"0000-00-00 00:00:00"}
 {"id":"2","post_id":"2","title":null,"content":null,"name":"f06c6b8e9cdd2d1d512d721b29856d71.jpg","status":null,"file_size":"33813","position":null,"created":"0000-00-00 00:00:00","updated":"0000-00-00 00:00:00"}
