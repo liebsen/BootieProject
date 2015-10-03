@@ -188,39 +188,53 @@ function log_message($message)
  * @param int $c the HTTP status code
  * @param string $method either location or redirect
  */
-function redirect($url = NULL, $message = '', $code = 302, $method = 'location')
+function redirect($url = NULL, $messages = array(), $code = 302, $method = 'location')
 {
 	if(strpos($url, '://') === FALSE)
 	{
 		$url = site_url($url);
 	}
 
-	if($message !== '')
+	if( ! empty($messages))
 	{
-		flash($message);
+		flash($messages);
 	}
 
-	//print dump($url);
+	if( AJAX_REQUEST )
+	{
+		return ['redirect' => $url];
+	}
 
 	header($method == 'refresh' ? "Refresh:0;url = $url" : "Location: $url", TRUE, $code);
 }
 
-function flash($message, $type = 'success')
+function flash($messages)
 {
-	if( session($type))
+	foreach($messages as $type => $text)
 	{
-		unset($_SESSION[$type]);
-	}
+		if( session($type))
+		{
+			unset($_SESSION[$type]);
+		}
 
-	$_SESSION[$type] = $message;
+		$_SESSION[$type] = $text;
+	}
 }
 
 function messages(){
-	$types = ['success','danger','warning','info'];
+	
+	$types = [
+		'success' => "ion-checkmark-circled",
+		'danger' => "ion-close-circled",
+		'warning' => "ion-alert-circled",
+		'info' => "ion-information-circled"
+	];
+
 	$messages = [];
-	foreach($types as $type){
-		if( $message = session($type)){
-			$messages[] = "<div class='alert alert-{$type}'>{$message}</div>";
+
+	foreach($types as $type => $icon){
+		if( $text = session($type)){
+			$messages[] = "<div class='alert alert-{$type}'><i class='{$icon}'></i> &nbsp; {$text}</div>";
 			unset($_SESSION[$type]);
 		}
 	}

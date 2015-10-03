@@ -10,6 +10,8 @@ define('START_TIME', microtime(true));
 // System Start Memory
 define('START_MEMORY_USAGE', memory_get_usage());
 
+define('TIME', time());
+
 define('AJAX_REQUEST', strtolower(getenv('HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest');
 
 // The current TLD address, scheme, and port

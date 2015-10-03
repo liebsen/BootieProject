@@ -6,8 +6,8 @@
 		<div class="row">
 			<div class="col-md-9">
 				<h3>&nbsp;<i class="ion-edit"></i> <?php echo $entry->title;?></h3>
-				<form class="form" id="post" action="/admin/posts/update">
-					<input type="hidden" name="id" value="<?php echo $entry->id;?>">
+				<input type="hidden" name="id" value="<?php echo $entry->id;?>">
+				<form class="form" id="post" action="/admin/posts/update/<?php echo $entry->id;?>">
 					<div class="form-group">
 						<input type="text" class="form-control slugify" data-target="slug" name="title" placeholder="Title" value="<?php echo $entry->title;?>" required>
 					</div>
@@ -30,8 +30,14 @@
 						<button type="submit" class="btn btn-lg btn-success"> <i class="ion-checkmark-round"></i> &nbsp;Save </button>
 					</div><div class="clearfix"></div>
 				</form>
-				<form class="dropzone" data-target="post" data-message="Drop images here" data-domain="posts" data-url="/admin/files/resize" data-index="/blog/files/<?php echo $entry->id;?>" data-id="<?php echo $entry->id;?>" data-max="10">
-					<input type="hidden" name="domain" value="posts">
+				<form 
+					class="dropzone" 
+					data-target="post" 
+					data-message="Drop images here" 
+					data-domain="posts" 
+					data-url="/admin/files/resize" 
+					data-index="/blog/files/<?php echo $entry->id;?>" 
+					data-id="<?php echo $entry->id;?>" data-max="10">
 				</form>
 			</div>
 			<div class="col-md-3">

@@ -6,7 +6,7 @@ class HomeController extends \Controller\BaseController {
 	
 	public function index(){
 		return \Bootie\App::view('index',[
-			'posts'	=> \Controller\BlogController::find_by_tag('hello')
+			'posts'	=> \Controller\BlogController::find_by_tag('start')
 		]);
 	}
 

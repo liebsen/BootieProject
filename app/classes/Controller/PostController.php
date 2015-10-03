@@ -15,15 +15,15 @@ class PostController extends \Controller\BaseController {
 		]);
 	}
 
-	public function edit($path,$id){
+	public function create(){
 
-		if( ! $id ){
-			$p = new \Model\Post();
-			$p->title = 'New Post';
-			$p->user_id = session('user_id');
-			$p->save();
-			$id = $p->id;
-		} 
+		$p = new \Model\Post();
+		$p->title = 'New Post';
+		$p->user_id = session('user_id');
+		$p->created = TIME;
+		$p->updated = TIME;
+		$p->save();
+		$id = $p->id;
 
 		$entry = \Model\Post::row([
 			'id' => $id
@@ -34,20 +34,88 @@ class PostController extends \Controller\BaseController {
 		]);
 	}
 
+	public function edit($path,$id){
 
-	public function update(){
+		if(is_numeric($id))
+		{
+			$entry = \Model\Post::row([
+				'id' => $id
+			]);
+			
+			return \Bootie\App::view('admin.posts.edit',[
+				'entry'	=> $entry
+			]);
+		}
+		
+		return \Exception('Post ID was not provided');
+	}
 
-		extract($_POST);
+	public function update($path,$id){
 
-		$entry = new \Model\Post();
-		$entry->id = $id;
-		$entry->title = $title;
-		$entry->slug = \Bootie\Str::slugify($title);
-		$entry->caption = $caption;
-		$entry->content = $content;
-		$entry->updated = time();
-		$result = $entry->save();
+		if(is_numeric($id))
+		{
 
-		return $result;
+			extract($_POST);
+
+			$entry = new \Model\Post();
+			$entry->id = $id;
+			$entry->title = $title;
+			$entry->slug = sanitize($title,false);
+			$entry->caption = $caption;
+			$entry->content = $content;
+			$entry->updated = TIME;
+			$result = $entry->save();
+
+			return redirect('/admin/posts',[
+				'success' => "Entry <strong>{$entry->title}</strong> has been updated"
+			]);
+		}
+
+		return redirect('/admin/posts',[
+			'danger' => "Entry ID was not provided"
+		]);
+	}
+
+	public function delete($path,$id){
+
+		if(is_numeric($id))
+		{
+			$entry = \Model\Post::row([
+				'id' => $id
+			]);
+
+			if( $entry )
+			{
+
+				$tags = \Model\PostTag::row([
+					'post_id' => $id
+				]);
+
+				if($tags)
+				{
+					$tags->delete();
+				}
+
+				foreach($entry->files() as $file)
+				{
+					\Bootie\Image::destroy_group($file->name,'posts');
+
+					\Model\File::row([
+						'id' => $file->id
+					])->delete();
+				}
+
+				$title = $entry->title;
+				$entry->delete();
+
+				return redirect('/admin/posts',[
+					'success' => "Entry <strong>{$title}</strong> has been deleted"
+				]);
+			}
+		}
+
+		return redirect('/admin/posts',[
+			'danger' => "Entry was not found"
+		]);
 	}
 }

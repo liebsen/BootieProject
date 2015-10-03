@@ -38,12 +38,13 @@ class TagController extends \Controller\BaseController {
 	public function add_relation($path,$post_id){
 
 		extract($_POST);
+
 		$included = [];
 
 		if(isset($tags)){
 
 			$user_id = session('user_id');
-			
+
 			foreach( $tags as $tag ){
 
 				$tag_id = \Model\Tag::select('column','id',null,[
@@ -55,6 +56,9 @@ class TagController extends \Controller\BaseController {
 					$tag2 = new \Model\Tag();
 					$tag2->tag = $tag;
 					$tag2->user_id = $user_id;
+					$tag2->type = 'blog';
+					$tag2->created = TIME;
+					$tag2->updated = TIME;
 					$tag2->save();
 
 					$tag_id = $tag2->id;
@@ -63,6 +67,8 @@ class TagController extends \Controller\BaseController {
 				$post_tag = new \Model\PostTag();
 				$post_tag->tag_id = $tag_id;
 				$post_tag->post_id = $post_id;
+				$post_tag->created = TIME;
+				$post_tag->updated = TIME;
 				$post_tag->save();
 
 				$included[] = $tag;

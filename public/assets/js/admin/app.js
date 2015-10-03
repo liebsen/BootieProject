@@ -32,8 +32,8 @@ $(document).on('submit','.form',function(){
         if(json.redirect){
           location.href = json.redirect;
         }
-        if(typeof forms[callback] == 'function') {
-          forms[callback].call(this,json);
+        if(typeof actions[callback] == 'function') {
+          actions[callback].call(this,json);
         }
         $('body').removeClass("loading");
       }
@@ -42,19 +42,14 @@ $(document).on('submit','.form',function(){
     return false;
   } 
 
-  if(typeof forms[callback] == 'function') {
-    forms[callback].call(this,null);
+  if(typeof actions[callback] == 'function') {
+    actions[callback].call(this,null);
   }
 
   return false;
 });
 
-var forms = {
-  admin_posts_update : function(){
-    location.href = '/admin/posts';
-    //location.reload();
-  }
-}
+var actions = {}
 
 /* Tags */
 
@@ -238,6 +233,7 @@ $(function(){
 
         myDropzone.on("sending", function(file, xhr, formData) {
           formData.append("post_id", id );
+          formData.append("domain", domain );
         });
 
         myDropzone.on("success", function(file, xhr) {

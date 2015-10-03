@@ -41,13 +41,24 @@ class FileController extends \Controller\BaseController {
 
 		extract($_POST);
 
-		if(isset($id) && $id){
+		var_dump($_POST);
 
-			$filename = \Model\File::row([
+		if( is_numeric($id) ){
+
+			$file = \Model\File::row([
 				'id' => $id
-			])->delete();
+			]);
 
-			return \Bootie\Image::destroy_group($filename);
+			var_dump($file);
+
+
+			if( $file )
+			{
+				\Bootie\Image::destroy_group($file->name,'posts');
+				$file->delete();
+			}
+
+			return ['ok'];
 		}
 
 		return [
@@ -96,6 +107,8 @@ class FileController extends \Controller\BaseController {
 				$entry->name = $filename;
 				$entry->post_id = $post_id;
 				$entry->file_size = $stat[7];
+				$entry->created = TIME;
+				$entry->updated = TIME;
 
 				$file_id = $entry->save();
 
@@ -118,5 +131,4 @@ class FileController extends \Controller\BaseController {
 			return \Exception('Could not write to directory:' . $storeFolder );
 		}
 	}
-
 }

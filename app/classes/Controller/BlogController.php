@@ -24,8 +24,7 @@ class BlogController extends \Controller\BaseController  {
 		$tags_ids = [];
 
 		$entry = \Model\Post::row([
-			'slug' => urldecode($slug),
-			'lang' => "en"
+			'slug' => urldecode($slug)
 		]);
 
 		if($entry) {
@@ -77,21 +76,16 @@ class BlogController extends \Controller\BaseController  {
 	}
 
 	public function find_by_tag($tag){
+
 		$tag_id = \Model\Tag::column([
 			'tag' => $tag
 		]);
 
 		if(is_numeric($tag_id)){
 
-			/* find posts by tag */
-
-			$tag_obs = \Model\PostTag::fetch([
+			$posts_ids = \Model\PostTag::select('fetch','post_id',null,[
 				'tag_id' => $tag_id
 			]);
-
-			foreach($tag_obs as $tag2){
-				$posts_ids[] = $tag2->post_id;
-			}
 
 			if(count($posts_ids)){
 				$posts = \Model\Post::fetch([
@@ -107,33 +101,20 @@ class BlogController extends \Controller\BaseController  {
 	}
 
 	public function find_all_tags(){
-		$posts_ids = [];
 
-		/* posts all */
-		$posts_all = \Model\Post::fetch([
-			'lang' => "en"
-		],0,0,[
-			'id' => 'DESC'
-		]);
-
-		foreach($posts_all as $post){
-			$posts_ids[] = $post->id;
-		}
+		$posts_ids = \Model\Post::select('fetch','id');
 
 		if(count($posts_ids)){
-			$tag_obs = \Model\PostTag::fetch([
+
+			$tags_ids = \Model\PostTag::select('fetch','tag_id',null,[
 				'post_id IN(' . implode(',',$posts_ids) . ')'
 			]);
 
-			foreach($tag_obs as $tag2){
-				$tags_ids[] = $tag2->tag_id;
+			if(count($tags_ids)){
+				return \Model\Tag::fetch([
+					'id IN(' . implode(',',array_unique($tags_ids)) . ')'
+				]);
 			}
-		}
-
-		if(count($tags_ids)){
-			return \Model\Tag::fetch([
-				'id IN(' . implode(',',array_unique($tags_ids)) . ')'
-			]);
 		}
 
 		return FALSE;

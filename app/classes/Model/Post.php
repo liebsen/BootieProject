@@ -11,13 +11,14 @@ class Post extends \Bootie\ORM
 	];
 
 	public static $has = array(
-		'files' => '\Model\File'
+		'files' => '\Model\File',
+		'post_tags'	=> '\Model\PostTag'
 	);
 
 	public static $has_many_through = array(
 		'tags' => array(
 			'post_id' => '\Model\PostTag',
 			'tag_id' => '\Model\Tag',
-		),
+		)
 	);
 }

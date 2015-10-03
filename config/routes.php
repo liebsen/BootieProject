@@ -15,8 +15,10 @@ App::route('/logout', 	[ 'uses' => 'Controller\AuthController@logout']);
 /* private */
 App::route('/admin', 	[ 'uses' => 'Controller\AdminController@index','before' => 'auth.admin']);
 App::route('/admin/posts', [ 'uses' => 'Controller\PostController@index','before' => 'auth.admin']);
-App::route('/admin/posts/update', [ 'uses' => 'Controller\PostController@update','method' => 'post','before' => 'auth.admin']);
 App::route('/admin/posts/(\d+)', [ 'uses' => 'Controller\PostController@edit','before' => 'auth.admin']);
+App::route('/admin/posts/create', [ 'uses' => 'Controller\PostController@create','before' => 'auth.admin']);
+App::route('/admin/posts/update/(\d+)', [ 'uses' => 'Controller\PostController@update','method' => 'post','before' => 'auth.admin']);
+App::route('/admin/posts/delete/(\d+)', [ 'uses' => 'Controller\PostController@delete','method' => 'post','before' => 'auth.admin']);
 App::route('/admin/tags/relation/remove/(\d+)', [ 'uses' => 'Controller\TagController@remove_relation','method' => 'post','before' => 'auth.admin']);
 App::route('/admin/tags/relation/add/(\d+)', [ 'uses' => 'Controller\TagController@add_relation','before' => 'auth.admin','method' => 'post']);
 App::route('/admin/tags/post/(\d+)', [ 'uses' => 'Controller\TagController@tags','before' => 'auth.admin']);
