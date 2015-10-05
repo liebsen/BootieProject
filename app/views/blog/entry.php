@@ -1,19 +1,23 @@
 <div class="col-md-9">
-  	<h1 class="page-header"><?php echo $entry->title;?></h1>
+    <h1 class="page-header"><?php echo $entry->title;?></h1>
     <blockquote><em><?php echo $entry->caption;?><br><?php echo date('Y M d',$entry->created);?></em></blockquote>
     <div class="">
-    <?php foreach($entry->tags() as $tag) : if( ! isset($tag->tag)) continue;?>
-        <a href="/blog/tag/<?php echo $tag->tag;?>" class="label label-success label-badge btn-tag-included"><?php echo $tag->tag;?></a>
-    <?php endforeach;?>
-    </div> 
-    <div class="slick-dotted">
-    <?php foreach($entry->files() as $file) : if( ! isset($file->name)) continue;?>
-        <div class="image">
-            <img class="img-responsive" src="/upload/posts/std/<?php echo $file->name;?>">
+        <?php foreach($entry->tags() as $tag) : if( ! isset($tag->tag)) continue;?>
+            <a href="/blog/tag/<?php echo $tag->tag;?>" class="label label-success label-badge btn-tag-included"><?php echo $tag->tag;?></a>
+        <?php endforeach;?>
         </div>
-    <?php endforeach;?>
+        <div class="group-control">&nbsp;</div>
+        <div class="slick-dotted">
+        <?php foreach($entry->files() as $file) : if( ! isset($file->name)) continue;?>
+            <div class="image">
+                <img class="img-responsive" src="/upload/posts/std/<?php echo $file->name;?>">
+            </div>
+        <?php endforeach;?>
     </div>
-    <?php echo $entry->content;?>
+    <div class="group-control">&nbsp;</div>
+    <div class="entry-content">
+        <?php echo $entry->content;?>
+    </div>
     <hr>
 </div>
 <div class="col-md-3">

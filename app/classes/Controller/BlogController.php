@@ -29,12 +29,19 @@ class BlogController extends \Controller\BaseController  {
 
 		if($entry) {
 
+			$meta = new \stdClass();
+			$meta->og_title = $entry->title;
+			$meta->og_description = $entry->caption;
 			$posts_ids = $related = [];
 
 			foreach($entry->tags() as $tag){
 				if( isset($tag->id)){
 					$tags_ids[] = $tag->id;
 				}
+			}
+
+			if(count($entry->files())){
+				$meta->og_image = site_url('upload/posts/std/' . $entry->files()[0]->name);
 			}
 
 			if(count($tags_ids)){
@@ -56,6 +63,7 @@ class BlogController extends \Controller\BaseController  {
 
 			return \Bootie\App::view('blog.entry',[
 				'entry'	=> $entry,
+				'meta'	=> $meta,
 				'related' => $related
 			]);
 		} 
