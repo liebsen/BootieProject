@@ -4,7 +4,7 @@
 <p>Based on Micromvc by David Pennington</p>
 <p>You can see an <a href="http://bootie.devmeta.net">online demo of this project here</a></p>
 <hr>
-<h2>Improvments</h2>
+<h2>Improvements</h2>
 <ul>
 <li>Dispatching method simplification</li>
 <li>Routing request method based</li>
