@@ -28,7 +28,7 @@ App::route('/admin/files/order', [ 'uses' => 'Controller\FileController@order','
 App::route('/admin/files/remove', [ 'uses' => 'Controller\FileController@destroy','method' => 'post','before' => 'auth.admin']);
 
 /* public pages */
-App::route('/([^/]+)', [ 'uses' => 'Controller\HomeController@page']);
+App::route('/(.*)', [ 'uses' => 'Controller\HomeController@page']);
 
 /* filters */
 App::filter('auth.admin',function(){
