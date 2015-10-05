@@ -26,8 +26,9 @@
 						<td><?php echo date('M d H:i',$post->updated);?></td>
 						<td>
 							<form action="/admin/posts/delete/<?php echo $post->id;?>" method="post">
-							<button type="submit" class="btn btn-danger" onclick="if(!confirm('Your are about to delete this post, are you sure?')) return false;"><i class="ion-close-circled"></i> Delete</button>
-							<a href="/admin/posts/<?php echo $post->id;?>" class="btn btn-success"><i class="ion-edit"></i> Edit</a>
+							<button type="submit" class="btn btn-danger" onclick="if(!confirm('Your are about to delete this post, are you sure?')) return false;" title="Delete"><i class="ion-close-circled"></i></button>
+							<a href="/blog/<?php echo $post->slug;?>" class="btn btn-warning" target="_blank" title="See"><i class="ion-eye"></i></a>
+							<a href="/admin/posts/<?php echo $post->id;?>" class="btn btn-success" title="Edit"><i class="ion-edit"></i></a>
 							</form>
 						</td>
 					</tr>

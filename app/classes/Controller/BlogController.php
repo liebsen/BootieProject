@@ -11,7 +11,7 @@ class BlogController extends \Controller\BaseController  {
 		]);
 	}
 
-	public function tag($path,$tag){
+	public function tag($tag){
 		return \Bootie\App::view('blog.tags',[
 			'posts'	=> self::find_by_tag($tag),
 			'tags'	=> self::find_all_tags(),
@@ -19,7 +19,7 @@ class BlogController extends \Controller\BaseController  {
 		]);
 	}
 
-	public function show($path,$slug){
+	public function show($slug){
 
 		$tags_ids = [];
 
@@ -71,7 +71,7 @@ class BlogController extends \Controller\BaseController  {
 		return \Bootie\App::view('errors.missing');
 	}
 
-	public function files($path,$id){
+	public function files($id){
 		$files = [];
 
 		if($id){

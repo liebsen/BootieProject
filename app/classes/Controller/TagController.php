@@ -4,7 +4,7 @@ class TagController extends \Controller\BaseController {
 	
 	static $layout = "admin";
 
-	public function tags($path,$post_id){
+	public function tags($post_id){
 
 		$tags_ids = $included = $excluded = [];
 		$user_id = session('user_id');
@@ -35,7 +35,7 @@ class TagController extends \Controller\BaseController {
 		];
 	}
 
-	public function add_relation($path,$post_id){
+	public function add_relation($post_id){
 
 		extract($_POST);
 
@@ -67,8 +67,6 @@ class TagController extends \Controller\BaseController {
 				$post_tag = new \Model\PostTag();
 				$post_tag->tag_id = $tag_id;
 				$post_tag->post_id = $post_id;
-				$post_tag->created = TIME;
-				$post_tag->updated = TIME;
 				$post_tag->save();
 
 				$included[] = $tag;
@@ -80,7 +78,7 @@ class TagController extends \Controller\BaseController {
 		];
 	}
 
-	public function remove_relation($path,$post_id){
+	public function remove_relation($post_id){
 
 		extract($_POST);
 		$excluded = [];

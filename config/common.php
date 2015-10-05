@@ -585,51 +585,51 @@ function timespan($ts)
 {
 	$mins = (time() - $ts) / 60;
 	$mins = round($mins);
-	$x3="";
+	$span="";
 	
 	if($mins==0)
 	{
-		$x3="now";
+		$span = "now";
 	} 
 	elseif($mins > 483840)
 	{ // años
-		$ratio = $mins / 483840 ;
-		$d = round($ratio);
-		$s = $d > 1 ? "s":"";
-		$x3 = $d . "y";//.$s;
+		/*
+		$ratio = round($mins / 483840) ;
+		$span = $ratio . "y";
+		*/
+		$span = date('Y M d',$ts);
 	} 
 	elseif($mins > 40319)
 	{ // meses
-		$ratio = $mins / 40320 ;
-		$d = round($ratio);
-		$s = $d > 1 ? "es":"";
-		$x3 = $d . "m";//.$s;
+		/*
+		$ratio = round($mins / 40320);
+		$span = $ratio . "m";;
+		*/
+		$span = date('Y M d',$ts);
 	} 
 	elseif($mins > 10079 && $mins < 40319)
 	{ // semanas
-		$ratio = $mins / 10080 ;
-		$d = round($ratio);
-		$s = $d > 1 ? "s":"";
-		$x3 = $d . "w";//.$s;
+		/*
+		$ratio = round($mins / 10080);
+		$span = $ratio . "w";;
+		*/
+		$span = date('M d',$ts);
 	} 
 	elseif($mins > 1439 && $mins < 10079)
 	{ // dias
-		$ratio = $mins / 1440 ;
-		$d = round($ratio);
-		$s = $d > 1 ? "s":"";
-		$x3 = $d . "d";//.$s;
+		$ratio = round($mins / 1440);
+		$span = $ratio . "d";
 	} 
 	elseif($mins > 59 && $mins < 1439)
 	{ // horas
-		$x3 = min2hour(round($mins));
+		$span = min2hour(round($mins));
 	} 
 	else 
 	{
-		$s = $mins > 1 ? "s":"";
-		$x3 = $mins . "’";//.$s;
+		$span = $mins . "’";
 	}
 	
-	return $x3;
+	return $span;
 }
 
 function min2hour($mins) 
@@ -674,7 +674,7 @@ function min2hour($mins)
     	$hours.= ":" . $M;
     }
     
-    $s = ($H > 1 || $M > 1) ? "s":"";
+    //$s = ($H > 1 || $M > 1) ? "s":"";
     $hours.= "h";//.$s; 
     
     return $hours; 

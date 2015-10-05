@@ -64,12 +64,12 @@ h4 small {
 }
 
 .navbar-inverse {
-  background-color: #333;
+  background-color: #0072B1;
   border: none;
 }
 
 .navbar-inverse.admin {
-   background-color: #666;
+   background-color: #EB4924;
 }
 
 .navbar-inverse .navbar a {

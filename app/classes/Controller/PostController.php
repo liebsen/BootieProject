@@ -34,7 +34,7 @@ class PostController extends \Controller\BaseController {
 		]);
 	}
 
-	public function edit($path,$id){
+	public function edit($id){
 
 		if(is_numeric($id))
 		{
@@ -50,7 +50,7 @@ class PostController extends \Controller\BaseController {
 		return \Exception('Post ID was not provided');
 	}
 
-	public function update($path,$id){
+	public function update($id){
 
 		if(is_numeric($id))
 		{
@@ -60,7 +60,7 @@ class PostController extends \Controller\BaseController {
 			$entry = new \Model\Post();
 			$entry->id = $id;
 			$entry->title = $title;
-			$entry->slug = sanitize($title,false);
+			$entry->slug = ! empty($slug) ? $slug : sanitize($title,false);
 			$entry->caption = $caption;
 			$entry->content = $content;
 			$entry->updated = TIME;
@@ -76,7 +76,7 @@ class PostController extends \Controller\BaseController {
 		]);
 	}
 
-	public function delete($path,$id){
+	public function delete($id){
 
 		if(is_numeric($id))
 		{

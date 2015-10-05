@@ -9,6 +9,15 @@
 				<input type="hidden" name="id" value="<?php echo $entry->id;?>">
 				<form class="form" id="post" action="/admin/posts/update/<?php echo $entry->id;?>">
 					<div class="form-group">
+					    <div class="input-group">
+					      <span class="input-group-btn">
+					        <button class="btn btn-sm disabled" type="button"><?php echo site_url('blog');?>/</button>
+					      </span>
+					      <input type="text" name="slug" class="form-control input-sm" placeholder="slug" value="<?php echo $entry->slug;?>" />
+					    </div>
+					</div>
+
+					<div class="form-group">
 						<input type="text" class="form-control slugify" data-target="slug" name="title" placeholder="Title" value="<?php echo $entry->title;?>" required>
 					</div>
 

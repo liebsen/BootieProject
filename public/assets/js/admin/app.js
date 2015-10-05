@@ -316,5 +316,5 @@ $(function(){
   }
 
   $('[data-toggle="popover"]').popover({trigger:"hover"});
-  $("a,span").not('[data-toggle="popover"]').tooltip({container: 'body'});
+  $("a,span,button").not('[data-toggle="popover"]').tooltip({container: 'body'});
 });
