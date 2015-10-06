@@ -102,6 +102,21 @@ function dd()
 	die($string);
 }
 
+function segments($i=0)
+{
+	$args = explode('/', rtrim(PATH, '/'));
+	if( $i )
+	{
+		if( isset($args[$i]))
+		{
+			return $args[$i];
+		}
+
+		return false;
+	}
+	
+	return $args;
+}
 
 /**
  * Safely fetch a $_POST value, defaulting to the value provided if the key is

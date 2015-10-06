@@ -13,10 +13,10 @@
 		</div>
 		<div class="collapse navbar-collapse" id="navbar-md">
 			<ul class="nav navbar nav-pills pull-right">
-				<li class="<?php echo isset($segments[0]) && $segments[0] == 'blog' ? ' active' : '';?>">
+				<li class="<?php echo segments(1) == 'blog' ? ' active' : '';?>">
 					<a href="/blog">Blog</a>
 				</li>				
-				<li class="<?php echo isset($segments[0]) && $segments[0] == 'contact' ? ' active' : '';?>">
+				<li class="<?php echo segments(1) == 'contact' ? ' active' : '';?>">
 					<a href="/contact">Contact</a>
 				</li>
 				<li>

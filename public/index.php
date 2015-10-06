@@ -8,7 +8,7 @@ $app = new \Bootie\App;
 
 try 
 {
-	$app->dispatch(PATH);
+	$app->handle(PATH);
 } 
 catch (Exception $e) 
 {
