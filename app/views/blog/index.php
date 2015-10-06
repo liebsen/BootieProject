@@ -11,7 +11,8 @@
                 <li>
                     <a href="/blog/<?php echo $post->slug;?>" class="feature-olivia col-md-4 col-sm-6 col-xs-6" style="background-image: url(/upload/posts/thumb/<?php echo count($post->files()) ? $post->files()[0]->name : 'default';?>)">
                         <div class="foam<?php echo $i%6+1;?> overlay"></div>
-                        <span class="feature-descrip"><?php echo $post->title;?></span>
+                        <span class="feature-title"><?php echo $post->title;?></span>
+                        <span class="feature-descrip"><?php echo words($post->caption,15);?></span>
                         <span class="aboutme-link"><i class="ion-android-time"></i> <?php echo timespan($post->created);?></span>
                     </a>
                 </li>
