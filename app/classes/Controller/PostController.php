@@ -8,7 +8,7 @@ class PostController extends \Controller\BaseController {
 
 		$entries = \Model\Post::paginate([
 			'updated' => "DESC"
-		]);
+		],null,10);
 
 		return \Bootie\App::view('admin.posts.index',[
 			'entries'	=> $entries

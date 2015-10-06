@@ -6,7 +6,7 @@ class BlogController extends \Controller\BaseController  {
 		
 	public function index(){
 		return \Bootie\App::view('blog.index',[
-			'posts'	=> \Model\Post::fetch([],0,0,['id' => 'DESC']),
+			'posts'	=> \Model\Post::paginate(['id' => 'DESC'],null,6),
 			'tags'	=> self::find_all_tags(),
 		]);
 	}
@@ -96,9 +96,11 @@ class BlogController extends \Controller\BaseController  {
 			]);
 
 			if(count($posts_ids)){
-				$posts = \Model\Post::fetch([
+				$posts = \Model\Post::paginate([
+					'id' => 'DESC'
+				],[
 					'id IN(' . implode(',',array_unique($posts_ids)) . ')'
-				]);
+				],6);
 			}
 
 			return $posts;

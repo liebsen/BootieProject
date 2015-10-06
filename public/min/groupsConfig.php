@@ -34,7 +34,8 @@ return array(
         '//assets/css/ionicons.min.css', 
         '//assets/css/slick.css',
         '//assets/css/theme.css',
-        '//assets/css/circle-tiles.css'
+        //'//assets/css/circle-tiles.css'
+        '//assets/css/foam.css'
     ),
     'js.admin' => array(
         '//assets/js/jquery-2.1.4.min.js',

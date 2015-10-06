@@ -11,7 +11,7 @@
 				<i class='ion-erlenmeyer-flask x2'></i> Bootie
 			</a>
 		</div>
-		<div class=dev"collapse navbar-collapse" id="navbar-md">
+		<div class="collapse navbar-collapse" id="navbar-md">
 			<ul class="nav navbar nav-pills pull-right">
 				<li class="<?php echo isset($segments[0]) && $segments[0] == 'blog' ? ' active' : '';?>">
 					<a href="/blog">Blog</a>
