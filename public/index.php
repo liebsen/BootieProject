@@ -5,6 +5,7 @@ require('../config/common.php');
 require('../config/routes.php');
 
 $app = new \Bootie\App;
+$db = null;
 
 try 
 {
