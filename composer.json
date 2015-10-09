@@ -4,14 +4,6 @@
 	"description": "Tiny PHP 5 Framework",
 	"keywords": ["php","mvc","framework","project"],
 	"homepage": "http://bootie.devmeta.net",
-    "authors": [
-        {
-            "name": "Martin Free",
-            "email": "martin@devmeta.net",
-            "homepage": "http://devmeta.net",
-            "role": "Developer"
-        }
-	],
 	"license": "MIT",
 	"require": {
 		"php": ">=5.3.0",

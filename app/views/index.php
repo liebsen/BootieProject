@@ -11,20 +11,25 @@
 	<h2>What it is </h2>
 	<hr>
 	<ul>
-		<li>Small full feature PHP 5 framework.</li>
-		<li>Easy to learn.</li>
-		<li>Fully customizable.</li>
+		<li>Tiny yet powerful Object Oriented PHP 5 framework</li>
+		<li>Easy to learn</li>
+		<li>Fully customizable</li>
+		<li>Lightweight</li>
 	</ul>
 	<div class="group-config">&nbsp;</div>
 	<h2> Features </h5>
 	<hr>
 	<ul>
 		<li>ORM</li>
+		<li>Routing</li>
 		<li>Migrations</li>
+		<li>Templating</li>
 	</ul>
+
 	<div class="group-config">&nbsp;</div>
 	<h2> Want to know more? </h5>
 	<hr>
+	<p>Take a look at this WAP components description <a href="https://github.com/martinfree/Bootie">Bootie</a></p>
 	<p>Learn more about <a href="https://github.com/martinfree/Bootie">Bootie</a></p>
 	<p>Feel free to <a href="/contact">contact us</a></p>
 </div>
