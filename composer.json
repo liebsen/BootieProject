@@ -1,7 +1,7 @@
 {
 	"name": "bootie/project",
 	"type": "project",
-	"description": "Tiny PHP 5 Framework",
+	"description": "Bootie PHP 5 Framework Integrated Example Project",
 	"keywords": ["php","mvc","framework","project"],
 	"homepage": "http://bootie.devmeta.net",
 	"license": "MIT",
