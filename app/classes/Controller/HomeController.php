@@ -10,7 +10,7 @@ class HomeController extends \Controller\BaseController {
 		]);
 	}
 
-	public function page($page){
-		return \Bootie\App::view($page);
+	public function page($slug){
+		return \Bootie\App::view("static.$slug");
 	}
 }
