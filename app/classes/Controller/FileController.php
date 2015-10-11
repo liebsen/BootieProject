@@ -128,7 +128,7 @@ class FileController extends \Controller\BaseController {
 				];
 			}
 
-			return \Exception('Could not write to directory:' . $storeFolder );
+			throw new \Exception('Could not write to directory:' . $storeFolder );
 		}
 	}
 }
