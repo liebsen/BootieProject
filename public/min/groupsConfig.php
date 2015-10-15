@@ -20,6 +20,7 @@ return array(
         '//assets/css/bootstrap.min.css', 
         '//assets/css/ionicons.min.css', 
         '//assets/css/theme.css',
+        '//assets/css/slick.css',
         '//assets/css/ltcircular.css',
         '//assets/css/circle-tiles.css'
     ),

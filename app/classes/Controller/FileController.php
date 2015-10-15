@@ -112,7 +112,7 @@ class FileController extends \Controller\BaseController {
 
 				$file_id = $entry->save();
 
-				\Bootie\Image::resize_group($orig_filename,$storeFolder,$filename);
+				\Bootie\Image::resize_group($orig_filename,$storeFolder,$filename, config()->img_sizes);
 
 				if( config()->img_save_orig)
 				{

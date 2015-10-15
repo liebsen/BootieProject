@@ -47,5 +47,17 @@ var forms = {
 }
 
 $(function(){
+  if($('.slick-dotted').length){
+    $('.slick-dotted').slick({    
+      dots: true,
+      infinite: true,
+      speed: 450,
+      pauseOnHover: false,
+      autoplaySpeed: 8000,
+      autoplay:true,
+      arrows: false,
+      fade: true
+    });
+  }
   $("a,span").tooltip({container: 'body'});
 });
