@@ -223,7 +223,7 @@ function redirect($url = NULL, $messages = array(), $code = 302, $method = 'loca
 	header($method == 'refresh' ? "Refresh:0;url = $url" : "Location: $url", TRUE, $code);
 }
 
-function flash($messages)
+function flash($messages = array())
 {
 	foreach($messages as $type => $text)
 	{

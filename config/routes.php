@@ -11,7 +11,6 @@ App::route('/blog/tag/([^/]+)', [ 'uses' => 'Controller\BlogController@tag']);
 App::route('/login', 	[ 'uses' => 'Controller\AuthController@login','method' => 'post']);
 App::route('/logout', 	[ 'uses' => 'Controller\AuthController@logout']);
 
-
 /* private */
 App::route('/admin', 	[ 'uses' => 'Controller\AdminController@index','before' => 'auth.admin']);
 App::route('/admin/posts', [ 'uses' => 'Controller\PostController@index','before' => 'auth.admin']);
