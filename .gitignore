@@ -1,8 +1,8 @@
 /bootstrap/compiled.php
 /vendor
+/storage
 /public/upload
 /config/config.php
-/storage/log/*
 composer.phar
 composer.lock
 .env.*.php
