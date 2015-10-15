@@ -1,5 +1,6 @@
 /bootstrap/compiled.php
 /vendor
+/public/upload
 /config/config.php
 /storage/log/*
 composer.phar
