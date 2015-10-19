@@ -26,7 +26,7 @@
         <ul>
         <?php foreach($related as $i => $post):?>
             <li>
-                <a href="/blog/<?php echo $post->slug;?>" class="feature-olivia col-md-12 col-sm-12 col-xs-12" style="background-image: url(/upload/posts/thumb/<?php echo count($post->files()) ? $post->files()[0]->name : 'default';?>)">
+                <a href="/blog/<?php echo $post->slug;?>" class="feature-olivia col-md-12 col-sm-12 col-xs-12" style="background-image: url(/upload/posts/std/<?php echo count($post->files()) ? $post->files()[0]->name : 'default';?>)">
                     <div class="foam<?php echo $i%6+1;?> overlay"></div>
                     <span class="feature-descrip"><?php echo $post->title;?></span>
                     <span class="aboutme-link"><i class="ion-android-time"></i> <?php echo timespan($post->created);?></span>

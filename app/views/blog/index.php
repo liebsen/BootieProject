@@ -9,7 +9,7 @@
             <ul>
             <?php foreach($posts as $i => $post):?>
                 <li>
-                    <a href="/blog/<?php echo $post->slug;?>" class="feature-olivia col-md-4 col-sm-6 col-xs-6" style="background-image: url(/upload/posts/thumb/<?php echo count($post->files()) ? $post->files()[0]->name : 'default';?>)">
+                    <a href="/blog/<?php echo $post->slug;?>" class="feature-olivia col-md-4 col-sm-6 col-xs-6" style="background-image: url(/upload/posts/std/<?php echo count($post->files()) ? $post->files()[0]->name : 'default';?>)">
                         <div class="foam<?php echo $i%6+1;?> overlay"></div>
                         <span class="feature-title"><?php echo $post->title;?></span>
                         <span class="feature-descrip"><?php echo words($post->caption,15);?></span>
