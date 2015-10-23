@@ -19,6 +19,7 @@
 <ul>
 <li>Dispatching method simplification</li>
 <li>Routing request method based</li>
+<li>Multiple database connections</li>
 <li>Filters</li>
 <li>Speed Cache</li>
 <li>Model pagination</li>
