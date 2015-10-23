@@ -1,7 +1,7 @@
 <?php
 
 // Start database connection
-$db = new \Bootie\Database(config()->database);
+$db = new \Bootie\Database();
 
 // Connect to databse server
 $db->connect();
