@@ -28,7 +28,6 @@ class AuthController extends \Controller\BaseController {
 			->where('id','=',1)
 			->select('count');
 
-		var_dump($exists);
 		extract($_POST);
 
 		$username = strtolower($username);
@@ -39,8 +38,6 @@ class AuthController extends \Controller\BaseController {
 			->where('username','=',$email)
 			->where('email','=',$email,' OR ')
 			->select('count');
-
-		var_dump($exists);
 
 		if( $exists ) {
 			return array('result'=>_l('Auth_Email_Exists') . ' : ' . $email);
@@ -92,14 +89,11 @@ class AuthController extends \Controller\BaseController {
 	}
 
 	public function logout(){
-		//AuthController::clear_session();
 		foreach($_SESSION as $k=>$v){
 			unset($_SESSION[$k]);
 		}
-		/*
-		session_destroy();
-		*/
-		return redirect("/login","Your session has been successfully closed.");
+
+		return redirect("/login",['success' => "Your session has been successfully closed."]);
 	}
 
 	public function login(){
