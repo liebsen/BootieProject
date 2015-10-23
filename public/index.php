@@ -11,7 +11,6 @@ require('../config/routes.php');
 
 if( config()->cache_enabled ) \Bootie\Cache::init(config()->cache,PATH);
 
-$db = null;
 $app = new \Bootie\App;
 
 try 
