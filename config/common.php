@@ -12,6 +12,14 @@
  */
 
 
+$message_types = array(
+	'success' => "ion-checkmark-circled",
+	'danger' => "ion-close-circled",
+	'warning' => "ion-alert-circled",
+	'info' => "ion-information-circled"
+);
+
+
 /**
  * Attach (or remove) multiple callbacks to an event and trigger those callbacks when that event is called.
  *
@@ -225,29 +233,29 @@ function redirect($url = NULL, $messages = array(), $code = 302, $method = 'loca
 
 function flash($messages = array())
 {
-	foreach($messages as $type => $text)
-	{
+	
+	global $message_types;
+
+	foreach($message_types as $type => $icon){
 		if( session($type))
 		{
 			unset($_SESSION[$type]);
 		}
+	}
 
+	foreach($messages as $type => $text)
+	{
 		$_SESSION[$type] = $text;
 	}
 }
 
 function messages(){
-	
-	$types = [
-		'success' => "ion-checkmark-circled",
-		'danger' => "ion-close-circled",
-		'warning' => "ion-alert-circled",
-		'info' => "ion-information-circled"
-	];
+
+	global $message_types;
 
 	$messages = [];
 
-	foreach($types as $type => $icon){
+	foreach($message_types as $type => $icon){
 		if( $text = session($type)){
 			$messages[] = "<div class='alert alert-{$type}'><i class='{$icon}'></i> &nbsp; {$text}</div>";
 			unset($_SESSION[$type]);
