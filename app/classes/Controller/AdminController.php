@@ -9,5 +9,4 @@ class AdminController extends \Controller\BaseController {
 			'posts_count'	=> \Model\Post::count()
 		]);
 	}
-
 }
