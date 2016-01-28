@@ -28,6 +28,15 @@ $config = [
 	],
 
 	/* 
+	 * Email settings
+	 */
+
+	'mailer' => [
+		'from' => "noreply@domain.org",
+		'title' => "domain.org"
+	],
+
+	/* 
 	 * Image manipulation (In Pixels)
 	 */
 
