@@ -127,6 +127,25 @@ function segments($i=0)
 }
 
 /**
+ * Safely fetch a $_REQUEST value, defaulting to the value provided if the key is
+ * not found.
+ *
+ * @param string $key name
+ * @param mixed $default value if key is not found
+ * @param boolean $string TRUE to require string type
+ * @return mixed
+ */
+function param($key, $default = NULL, $string = FALSE)
+{
+	if(isset($_REQUEST[$key]))
+	{
+		return $string ? (string)$_REQUEST[$key] : $_REQUEST[$key];
+	}
+	return $default;
+}
+
+
+/**
  * Safely fetch a $_POST value, defaulting to the value provided if the key is
  * not found.
  *
